@@ -1,0 +1,75 @@
+<EditorPanel> 
+    PageLayout:
+        border: 30
+        swipe_threshold: .1
+        
+
+        # 1ページ目 : 
+        # 花火の制作画面
+        BoxLayout:
+            orientation:"vertical"
+            size_hint_y: 2
+
+            # =====================花火玉の表示画面
+            BoxLayout:
+
+                # 位置花火玉の編集画面
+                BoxLayout:
+                    canvas:
+                        Color:
+                            rgba: 1,0,0,1
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                # TODO: 他花火のストック画面
+                # BoxLayout:
+                #     Label:
+                #         text:"hoge"
+
+            # =============色選択パネル
+            BoxLayout:
+                orientation:"vertical"
+                size_hint_y: 0.5
+                # 一段目
+                BoxLayout:
+                    Button:
+                        text:"1"
+                    Button:
+                        text:"2"
+                    Button:
+                        text:"3"
+                    Button:
+                        text:"4"
+                    Button:
+                        text:"5"
+                    Button:
+                        text:"6"
+                BoxLayout:
+                    Button:
+                        text:"7"
+                    Button:
+                        text:"8"
+                    Button:
+                        text:"9"
+                    Button:
+                        text:"10"
+                    Button:
+                        text:"11"
+                    Button:
+                        text:"12"
+
+            AnchorLayout:
+                anchor_x:"right"
+                size_hint_y: 0.4
+                Button:
+                    text:"complete"
+
+        # 2ページ目 : 
+        # 花火のシミュレーション画面
+        BoxLayout:
+            canvas:
+                Color:
+                    rgba: 1,1,1,1
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
