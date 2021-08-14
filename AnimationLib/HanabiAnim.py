@@ -32,24 +32,30 @@ def flyAlgorythm(counter, length):
     getY = None
 
     firstStrike = 100
+    secondStrike = 200
 
     # 花火が上昇中
     if(counter < firstStrike):
         def getX(counter, index):
-            return 0
+            return math.cos(math.radians(45 * (counter % 8))) * 2
 
         def getY(counter, index):
             return counter * 3
 
     # 　花火が拡散
-    else:
+    elif(counter < firstStrike * 2):
         def getX(counter, index):
             return math.cos(math.radians(360 / length * index)) * (counter - firstStrike)
 
         def getY(counter, index):
             return math.sin(math.radians(360 / length * index)) * (counter - firstStrike) + firstStrike * 3 - (counter / 20) ** 2
 
-    color = counter % firstStrike / firstStrike
+    # 完全に消えた(アニメーションを停止)
+    else:
+        Animation.endAnim()
+        return None
+
+    color = 1 - counter % firstStrike / firstStrike
     return [
         {"x": getX(counter, i),
          "y": getY(counter, i),
@@ -75,13 +81,16 @@ def _flyHanabi(dt):
     _pointList = []
 
     with _canvas:
-        for item in flyAlgorythm(_counter, 9):
+        arr = flyAlgorythm(_counter, 9)
+        if arr != None:
+            for item in arr:
 
-            r, g, b = item["color"]
-            Color(r, g, b)
-            _pointList.append(Rectangle(pos=(item["x"] + 200, item["y"] + 200), size=(5, 5)))
+                r, g, b = item["color"]
+                Color(r, g, b)
+                _pointList.append(Rectangle(pos=(item["x"] + 200, item["y"] + 200), size=(5, 5)))
+        else:
+            _counter = 0
     _counter += 1
-    print(_counter)
 
 
 def _fireTrigger(_instance):

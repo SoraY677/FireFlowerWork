@@ -33,30 +33,42 @@
                 # 一段目
                 BoxLayout:
                     Button:
-                        text:"1"
+                        text:"red"
+                        background_color: (0.9,0,0,1)
                     Button:
-                        text:"2"
+                        text:"orange"
+                        background_color: (0.94,0.45,0,1)
                     Button:
-                        text:"3"
+                        text:"yellow"
+                        background_color: (1,0.98,0,1)
                     Button:
-                        text:"4"
+                        text:"light green"
+                        background_color: (0.58,0.7,0.2,1)
                     Button:
-                        text:"5"
+                        text:"green"
+                        background_color: (0,0.8,0.26,1)
                     Button:
-                        text:"6"
+                        text:"light blue"
+                        background_color: (0,0.68,0.9,1)
                 BoxLayout:
                     Button:
-                        text:"7"
+                        text:"blue"
+                        background_color: (0,0.6,0.74,1)
                     Button:
-                        text:"8"
+                        text:"deep blue"
+                        background_color: (0.2,0.2,0.7,1)
                     Button:
-                        text:"9"
+                        text:"purple"
+                        background_color: (0.6,0.08,0.6,1)
                     Button:
-                        text:"10"
+                        text:"pink"
+                        background_color: (0.8,0,0.53)
                     Button:
-                        text:"11"
+                        text:"white"
+                        background_color: (1,1,1,1)
                     Button:
-                        text:"12"
+                        text:"black"
+                        background_color: (0,0,0,1)
 
             AnchorLayout:
                 anchor_x:"right"
@@ -72,7 +84,7 @@
                 id:"simulation_canvas"
                 canvas:
                     Color:
-                        rgba: 1,1,1,1
+                        rgba: 0,0,0,1
                     Rectangle:
                         size: self.size
                         pos: self.pos
