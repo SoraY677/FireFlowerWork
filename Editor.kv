@@ -12,7 +12,7 @@
 
             # =====================花火玉の表示画面
             BoxLayout:
-
+                
                 # 位置花火玉の編集画面
                 BoxLayout:
                     canvas:
@@ -67,9 +67,16 @@
         # 2ページ目 : 
         # 花火のシミュレーション画面
         BoxLayout:
-            canvas:
-                Color:
-                    rgba: 1,1,1,1
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+            orientation:"vertical"
+            Widget:
+                id:"simulation_canvas"
+                canvas:
+                    Color:
+                        rgba: 1,1,1,1
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+
+            Button:
+                id:"simulation_start"
+                text:"simulation start"
