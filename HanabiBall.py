@@ -14,4 +14,4 @@ def init():
             if z <= 15:
                 hanabiBall[tate].append(None)
             else:
-                hanabiBall[tate].append([0.2, 0.2, 0.2])
+                hanabiBall[tate].append([0, 0, 0])

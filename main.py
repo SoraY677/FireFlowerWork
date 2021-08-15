@@ -37,7 +37,6 @@ class EditorPanel(BoxLayout):  # ユーザーインタフェースを初期化�
                         global _color
                         instance.background_color = _color
                         HanabiBall.hanabiBall[num[0]][num[1]] = [_color[0], _color[1], _color[2]]
-                        print(HanabiBall.hanabiBall[num[0]][num[1]])
 
                     buttonlist[tate][yoko].bind(on_press=partial(callback, [tate, yoko]))
                     layout.add_widget(buttonlist[tate][yoko])

@@ -2,6 +2,7 @@ import math
 
 from kivy.graphics import Color
 from kivy.graphics import Rectangle
+import HanabiBall
 
 
 from . import Animation
@@ -22,7 +23,7 @@ def init(canvas, trigger):
 _prevPos = {"x": 0, "y": 0}
 
 
-def flyAlgorythm(counter, length):
+def flyAlgorythm(counter, arr):
     '''
     花火の移動アルゴリズム
     ※宮澤君にお願いしているところ
@@ -32,35 +33,37 @@ def flyAlgorythm(counter, length):
     getY = None
 
     firstStrike = 100
-    secondStrike = 200
+    secondStrike = 300
 
     # 花火が上昇中
     if(counter < firstStrike):
-        def getX(counter, index):
-            return math.cos(math.radians(45 * (counter % 8))) * 2
-
-        def getY(counter, index):
-            return counter * 3
+        dec = counter + 1
+        return(
+            [{"x": math.cos(math.radians(45 * (counter % 8))) * 2,
+              "y": counter * 3,
+              "color": (1, 1, 1)}]
+        )
 
     # 　花火が拡散
-    elif(counter < firstStrike * 2):
-        def getX(counter, index):
-            return math.cos(math.radians(360 / length * index)) * (counter - firstStrike)
+    elif(counter < secondStrike):
+        result = []
+        dec = counter - firstStrike
+        small = (dec + 1) / 25
+        for tate in range(len(arr)):
+            for yoko in range(len(arr[tate])):
+                if arr[tate][yoko] != None:
+                    color = (arr[tate][yoko][0] / small, arr[tate][yoko][1] / small, arr[tate][yoko][2] / small)
 
-        def getY(counter, index):
-            return math.sin(math.radians(360 / length * index)) * (counter - firstStrike) + firstStrike * 3 - (counter / 20) ** 2
+                    result.append(
+                        {"x": (yoko - 15) * dec / 10,
+                         "y": (tate - 15) * dec / 10 + 300,
+                         "color": color})
 
+        return result
     # 完全に消えた(アニメーションを停止)
     else:
         Animation.endAnim()
         return None
-
-    color = 1 - counter % firstStrike / firstStrike
-    return [
-        {"x": getX(counter, i),
-         "y": getY(counter, i),
-         "color": (color, color, color)}
-        for i in range(0, length)]
 
 
 _pointList = []
@@ -81,10 +84,9 @@ def _flyHanabi(dt):
     _pointList = []
 
     with _canvas:
-        arr = flyAlgorythm(_counter, 9)
+        arr = flyAlgorythm(_counter, HanabiBall.hanabiBall)
         if arr != None:
             for item in arr:
-
                 r, g, b = item["color"]
                 Color(r, g, b)
                 _pointList.append(Rectangle(pos=(item["x"] + 200, item["y"] + 200), size=(5, 5)))
