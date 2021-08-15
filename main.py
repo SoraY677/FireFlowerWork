@@ -31,7 +31,7 @@ class EditorPanel(BoxLayout):  # ユーザーインタフェースを初期化�
                 z = math.sqrt(((14 - tate)**2) + ((14 - yoko)**2))
                 if z <= 15:
                     buttonlist[tate].append(Button())
-                    buttonlist[tate][yoko].background_color = [0.2, 0.2, 0.2, 1]
+                    buttonlist[tate][yoko].background_color = [0.4, 0.4, 0.4, 1]
 
                     def callback(num, instance):
                         global _color
@@ -61,7 +61,7 @@ class EditorPanel(BoxLayout):  # ユーザーインタフェースを初期化�
             (0.6, 0.08, 0.6, 1),
             (0.8, 0, 0.53, 1),
             (1, 1, 1, 1),
-            (0, 0, 0, 1)
+            (0.4, 0.4, 0.4, 1)
         )[colornum - 1]
 
 
